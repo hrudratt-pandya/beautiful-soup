@@ -22,9 +22,8 @@ and install it with setup.py. python setup.py install
 
 '''
 Points from trainner:
-    dataframe
+    add dataframe part as well.
 '''
-
 
 html_doc = """
 <html><head><title>The Dormouse's story</title></head>
@@ -40,8 +39,8 @@ and they lived at the bottom of a well.</p>
 <p class="story">...</p>
 """
 
-
 from bs4 import BeautifulSoup
+
 # # if you have html file then open file and pass it into BeautifulSoup constuctor
 with open("index.html") as fp:
     soup = BeautifulSoup(fp, 'html.parser')
@@ -53,7 +52,7 @@ with open("index.html") as fp:
 # print(b.attrs)    # Get all attribute like class, href, etc. in dict form
 
 # print(soup.title)   # To get a whole title tag with text. 
-                      # If html 2 tag with the same name then it'll take 1st one
+# If html 2 tag with the same name then it'll take 1st one
 # #Output: <title>The Dormouse's story</title>
 '''========================================================================='''
 
@@ -99,7 +98,7 @@ with open("index.html") as fp:
 
 # # To get links which are in a tag.
 for link in soup.find_all('a', multi_valued_attributes=None):
-    if link.has_attr( "class" ):
+    if link.has_attr("class"):
         if link['class'] == ['sister']:
             print(link.get('href'))
 '''========================================================================='''
@@ -117,11 +116,11 @@ for link in soup.find_all('a', multi_valued_attributes=None):
 # # <p>Back to the <a rel="index contents">homepage</a></p>
 '''========================================================================='''
 
-# #  If you want class without spliting with space 
+# #  If you want class without splitting with space
 # #  then you've to write "multi_valued_attributes=None".
 # no_list_soup = BeautifulSoup('<p class="body strikeout"></p>', 'html', multi_valued_attributes=None)
 # print(no_list_soup.p['class'])
 '''========================================================================='''
 # # You can use `get_attribute_list to get a value that’s always a list, 
-# # whether or not it’s a multi-valued atribute:
+# # whether it’s a multivalued attribute:
 # print(soup.find("p",id='story id').get_attribute_list('id'))
